@@ -74,6 +74,12 @@
                             Call Campus Security
                         </button>
 
+                        <!-- New Fake Call Button -->
+                        <button id="fakeCallBtn" class="action-button outline" style="margin-top:1rem;">
+                            <i class="fas fa-phone-volume"></i>
+                            Fake Call
+                        </button>
+
                         <div class="instructions">
                             <p><strong>How it works:</strong></p>
                             <ul>
@@ -309,6 +315,8 @@
                 <img src="campus-map.png" alt="Campus Map Zoomed" id="zoomedMapImg">
             </div>
         </div>
+
+        <audio id="fakeCallAudio" src="ringtone.mp3" preload="auto"></audio>
     </div>
 
     <script src="script.js"></script>
