@@ -731,40 +731,51 @@ body.dark-mode .number-item a {
     opacity: 0.7;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    .app {
-        margin: 0;
-        box-shadow: none;
-    }
-    
-    .main {
-        padding: 0.5rem;
-    }
-    
-    .card-content {
-        padding: 1rem;
-    }
-    
-    .sos-button {
-        width: 120px;
-        height: 120px;
-        font-size: 1.25rem;
-    }
-    
-    .numbers-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .action-buttons {
-        grid-template-columns: 1fr;
-    }
-    
-    .add-contact-form .input-group {
-        grid-template-columns: 1fr;
-    }
-    
-    .nav-btn span {
-        font-size: 0.7rem;
-    }
+/* Map Zoom Modal */
+.map-zoom-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+.map-zoom-modal.hidden {
+    display: none;
+}
+.map-zoom-content {
+    position: relative;
+    background: #222;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.map-zoom-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+.close-map-zoom {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: #fff;
+    color: #222;
+    border: none;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+.close-map-zoom:hover {
+    background: #ff416c;
+    color: #fff;
 }
