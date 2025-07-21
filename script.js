@@ -372,3 +372,81 @@ class CampusSafetyApp {
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new CampusSafetyApp();
 });
+
+// Map Section Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('campusMapCanvas');
+    const ctx = canvas?.getContext('2d');
+    const mapImg = new Image();
+    mapImg.src = 'campus-map.png'; // Save your map image as 'campus-map.png' in the project root
+
+    let points = [];
+    let pathDrawn = false;
+
+    if (canvas && ctx) {
+        mapImg.onload = () => {
+            ctx.drawImage(mapImg, 0, 0, canvas.width, canvas.height);
+        };
+
+        canvas.addEventListener('click', (e) => {
+            if (points.length >= 2) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * canvas.width;
+            const y = ((e.clientY - rect.top) / rect.height) * canvas.height;
+            points.push({ x, y });
+
+            // Draw marker
+            ctx.beginPath();
+            ctx.arc(x, y, 8, 0, 2 * Math.PI);
+            ctx.fillStyle = points.length === 1 ? '#28a745' : '#ff416c';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw path if two points selected
+            if (points.length === 2) {
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                ctx.lineTo(points[1].x, points[1].y);
+                ctx.strokeStyle = '#ff416c';
+                ctx.lineWidth = 4;
+                ctx.stroke();
+                pathDrawn = true;
+            }
+        });
+
+        document.getElementById('resetMapBtn').addEventListener('click', () => {
+            points = [];
+            pathDrawn = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(mapImg, 0, 0, canvas.width, canvas.height);
+        });
+    }
+});
+
+// Map Zoom Modal Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('campusMapCanvas');
+    const mapZoomModal = document.getElementById('mapZoomModal');
+    const closeMapZoom = document.getElementById('closeMapZoom');
+    const zoomedMapImg = document.getElementById('zoomedMapImg');
+
+    if (canvas && mapZoomModal && closeMapZoom && zoomedMapImg) {
+        canvas.addEventListener('dblclick', (e) => {
+            // Show modal with zoomed map
+            mapZoomModal.classList.remove('hidden');
+        });
+
+        closeMapZoom.addEventListener('click', () => {
+            mapZoomModal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside the image
+        mapZoomModal.addEventListener('click', (e) => {
+            if (e.target === mapZoomModal) {
+                mapZoomModal.classList.add('hidden');
+            }
+        });
+    }
+});
