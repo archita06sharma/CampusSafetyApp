@@ -450,3 +450,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Fake Call Button Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const fakeCallBtn = document.getElementById('fakeCallBtn');
+    const fakeCallAudio = document.getElementById('fakeCallAudio');
+    let isRinging = false;
+
+    if (fakeCallBtn && fakeCallAudio) {
+        fakeCallBtn.addEventListener('click', () => {
+            if (!isRinging) {
+                fakeCallAudio.currentTime = 0;
+                fakeCallAudio.loop = true;
+                fakeCallAudio.play();
+                fakeCallBtn.innerHTML = '<i class="fas fa-phone-slash"></i> Stop Fake Call';
+                isRinging = true;
+            } else {
+                fakeCallAudio.pause();
+                fakeCallAudio.currentTime = 0;
+                fakeCallBtn.innerHTML = '<i class="fas fa-phone-volume"></i> Fake Call';
+                isRinging = false;
+            }
+        });
+    }
+});
