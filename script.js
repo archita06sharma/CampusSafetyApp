@@ -51,7 +51,7 @@ class CampusSafetyApp {
         });
 
         callSecurityBtn.addEventListener('click', () => {
-            window.location.href = 'tel:+1234567890'; // Replace with actual campus security number
+            window.location.href = 'tel:1752394700'; // Replace with actual campus security number
         });
     }
 
