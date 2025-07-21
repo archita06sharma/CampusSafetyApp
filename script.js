@@ -14,7 +14,6 @@ class CampusSafetyApp {
         this.setupSafeRoute();
         this.setupEmergencyContacts();
         this.loadContactsList();
-        this.setupDarkModeToggle();
     }
 
     // Navigation
@@ -319,25 +318,6 @@ class CampusSafetyApp {
             this.loadContactsList();
             this.showToast('Contact deleted', 'success');
         }
-    }
-
-    // Dark Mode
-    setupDarkModeToggle() {
-        const toggleBtn = document.getElementById('darkModeToggle');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const saved = localStorage.getItem('campusSafetyDarkMode');
-        if ((saved === 'dark') || (!saved && prefersDark)) {
-            document.body.classList.add('dark-mode');
-            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            toggleBtn.innerHTML = isDark
-                ? '<i class="fas fa-sun"></i>'
-                : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('campusSafetyDarkMode', isDark ? 'dark' : 'light');
-        });
     }
 
     // Local Storage
