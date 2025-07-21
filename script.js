@@ -306,7 +306,7 @@ class CampusSafetyApp {
     }
 
     messageContact(phone) {
-        const message = `Hi! I'm sharing my location for safety. Here's where I am: ${this.getLocationLink() || 'Location not available'}`;
+        const message = `Hi! I need your help, this is an emergency. Please check on me as soon as possible.`;
         const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     }
