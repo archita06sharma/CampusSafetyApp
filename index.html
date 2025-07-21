@@ -38,6 +38,10 @@
                 <i class="fas fa-clipboard-list"></i>
                 <span>Reports</span>
             </a>
+            <button class="nav-btn" data-section="map">
+                <i class="fas fa-map"></i>
+                <span>Map</span>
+            </button>
         </nav>
 
         <!-- Main Content -->
@@ -256,6 +260,34 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Campus Map Section -->
+            <section id="map" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Campus Map</h2>
+                        <p>Select two locations to see the path</p>
+                    </div>
+                    <div class="card-content">
+                        <div style="overflow:auto;">
+                            <canvas id="campusMapCanvas" width="750" height="401" style="max-width:100%;border:1px solid #ccc;background:#e9ecef;"></canvas>
+                        </div>
+                        <div style="margin-top:1rem;">
+                            <button id="resetMapBtn" class="action-button secondary" type="button">
+                                <i class="fas fa-undo"></i> Reset Selection
+                            </button>
+                        </div>
+                        <div class="instructions">
+                            <p><strong>How to use:</strong></p>
+                            <ul>
+                                <li>Click on the map to select your <b>start</b> and <b>end</b> points.</li>
+                                <li>The shortest path will be shown as a red line.</li>
+                                <li>Click "Reset Selection" to choose new points.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Toast Notifications -->
@@ -269,6 +301,14 @@
         <button id="darkModeToggle" class="action-button outline" title="Toggle dark mode" type="button">
             <i class="fas fa-moon"></i>
         </button>
+
+        <!-- Map Zoom Modal -->
+        <div id="mapZoomModal" class="map-zoom-modal hidden">
+            <div class="map-zoom-content">
+                <button id="closeMapZoom" class="close-map-zoom">&times;</button>
+                <img src="campus-map.png" alt="Campus Map Zoomed" id="zoomedMapImg">
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
