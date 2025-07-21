@@ -14,9 +14,6 @@
     <div class="app">
         <header class="header">
             <h1><i class="fas fa-shield-alt"></i> Campus Safety</h1>
-            <button id="darkModeToggle" class="action-button outline" title="Toggle dark mode">
-    <i class="fas fa-moon"></i>
-</button>
         </header>
 
         <!-- Navigation -->
@@ -29,10 +26,6 @@
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Location</span>
             </button>
-            <button class="nav-btn" data-section="route">
-                <i class="fas fa-route"></i>
-                <span>Route</span>
-            </button>
             <button class="nav-btn" data-section="contacts">
                 <i class="fas fa-address-book"></i>
                 <span>Contacts</span>
@@ -41,6 +34,10 @@
                 <i class="fas fa-lightbulb"></i>
                 <span>Tips</span>
             </button>
+            <a class="nav-btn" href="reports.html" style="text-decoration:none;">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Reports</span>
+            </a>
         </nav>
 
         <!-- Main Content -->
@@ -137,51 +134,6 @@
                             <div class="privacy-note">
                                 <strong>Privacy:</strong> Your location is only shared when you choose to send it. No data is stored on our servers.
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Route Section -->
-            <section id="route" class="section">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Route Navigation</h2>
-                        <p>Find the shortest path to your destination</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="route-inputs">
-                            <div class="input-group">
-                                <label for="fromLocation">From:</label>
-                                <input type="text" id="fromLocation" placeholder="Current location or address">
-                            </div>
-                            <div class="input-group">
-                                <label for="toLocation">To:</label>
-                                <input type="text" id="toLocation" placeholder="Destination address">
-                            </div>
-                            <button id="findRouteBtn" class="action-button primary">
-                                <i class="fas fa-route"></i>
-                                Find Shortest Route
-                            </button>
-                        </div>
-
-                        <div id="mapContainer" class="map-container">
-                            <iframe id="mapFrame" 
-                                    src="https://maps.google.com/maps?q=university+campus&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                    allowfullscreen="" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
-                        <div class="instructions">
-                            <p><strong>Safety Features:</strong></p>
-                            <ul>
-                                <li>• Uses well-lit main roads when possible</li>
-                                <li>• Avoids isolated areas and shortcuts</li>
-                                <li>• Shows estimated walking time</li>
-                                <li>• Includes campus security points along route</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -313,8 +265,13 @@
                 <span class="toast-message"></span>
             </div>
         </div>
+        <!-- Move dark mode toggle here -->
+        <button id="darkModeToggle" class="action-button outline" title="Toggle dark mode" type="button">
+            <i class="fas fa-moon"></i>
+        </button>
     </div>
 
     <script src="script.js"></script>
+    <script src="darkmode.js"></script>
 </body>
 </html>
